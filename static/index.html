@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="Satisfaction Survey form Wizard by Ansonika.">
+	<meta name="author" content="Ansonika">
+	<title>Eskola | DevOps Survey</title>
+
+	<!-- Favicons-->
+	<link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
+	<link rel="apple-touch-icon" type="image/x-icon" href="img/apple-touch-icon-57x57-precomposed.png">
+	<link rel="apple-touch-icon" type="image/x-icon" sizes="72x72" href="img/apple-touch-icon-72x72-precomposed.png">
+	<link rel="apple-touch-icon" type="image/x-icon" sizes="114x114" href="img/apple-touch-icon-114x114-precomposed.png">
+	<link rel="apple-touch-icon" type="image/x-icon" sizes="144x144" href="img/apple-touch-icon-144x144-precomposed.png">
+
+	<!-- GOOGLE WEB FONT -->
+	<link href="https://fonts.googleapis.com/css?family=Caveat|Poppins:300,400,500,600,700&display=swap" rel="stylesheet">
+
+	<!-- BASE CSS -->
+	<link href="css/bootstrap.min.css" rel="stylesheet">
+	<link href="css/style.css" rel="stylesheet">
+	<link href="css/vendors.css" rel="stylesheet">
+
+	<!-- YOUR CUSTOM CSS -->
+	<link href="css/custom.css" rel="stylesheet">
+
+</head>
+
+<body class="style_3">
+
+	<div id="preloader">
+		<div data-loader="circle-side"></div>
+	</div><!-- /Preload -->
+
+	<div id="loader_form">
+		<div data-loader="circle-side-2"></div>
+	</div><!-- /loader_form -->
+
+	<header>
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-5">
+					<a href="index.html"><img src="img/logo.png" alt="" width="200"></a>
+				</div>
+				<div class="col-7">
+					<div id="social">
+						<ul>
+							<li><a href="https://www.facebook.com/eskolaapp"><i class="social_facebook"></i></a></li>
+							<li><a href="https://www.youtube.com/@JohnyDev"><i class="social_youtube"></i></a></li>
+							<li><a href="https://www.instagram.com/eskolaapp/"><i class="social_instagram"></i></a></li>
+							<li><a href="https://www.linkedin.com/company/eskolaapp/"><i class="social_linkedin"></i></a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<!-- /row -->
+		</div>
+		<!-- /container -->
+	</header>
+	<!-- /header -->
+
+	<div class="wrapper_centering">
+		<div class="container_centering">
+			<div class="container">
+				<div class="row justify-content-between">
+					<div class="col-xl-6 col-lg-6 d-flex align-items-center">
+						<div class="main_title_1">
+							<h3><img src="img/main_icon_1.svg" width="80" height="80" alt=""> Survey</h3>
+							<p>Hello everyone! This is JohnyDev, by collaborating with Eskola We're in the process of building a
+								DevOps course, and we want to make sure it meets your needs
+								and expectations. In order to do that, we need your help. We're conducting a short survey to collect
+								information about the stack that is most used, what you need and want from this course.</p>
+							<p>Your input is incredibly valuable to us, and
+								we'd really appreciate your participation. Thank you in advance for your
+								participation!.</p>
+							<p><em>- Eskola Team</em></p>
+						</div>
+					</div>
+					<!-- /col -->
+					<div class="col-xl-5 col-lg-5">
+						<div id="wizard_container">
+							<div id="top-wizard">
+								<div id="progressbar"></div>
+							</div>
+							<!-- /top-wizard -->
+							<form id="wrapped" method="POST" autocomplete="off">
+								<input id="website" name="website" type="text" value="">
+								<!-- Leave for security protection, read docs for details -->
+								<div id="middle-wizard">
+
+									<!-- Q1-->
+									<div class="step">
+										<h3 class="main_question"><strong>1 of 5</strong>Which Cloud Provider?</h3>
+										<div class="review_block">
+											<ul class="clearfix">
+												<li>
+													<div class="checkbox_radio_container">
+														<input type="radio" id="q1-o1" name="question_1" class="required"
+															onchange="getVals(this, 'question_1');">
+														<label class="radio" for="q1-o1"></label>
+														<label for="q1-o1" class="wrapper">Amazon Web Services</label>
+													</div>
+												</li>
+												<li>
+													<div class="checkbox_radio_container">
+														<input type="radio" id="q1-o2" name="question_1" class="required"
+															onchange="getVals(this, 'question_1');">
+														<label class="radio" for="q1-o2"></label>
+														<label for="q1-o2" class="wrapper">Microsoft Azure</label>
+													</div>
+												</li>
+												<li>
+													<div class="checkbox_radio_container">
+														<input type="radio" id="q1-o3" name="question_1" class="required"
+															onchange="getVals(this, 'question_1');">
+														<label class="radio" for="q1-o3"></label>
+														<label for="q1-o3" class="wrapper">Google Cloud Platform</label>
+													</div>
+												</li>
+											</ul>
+										</div>
+										<div class="form-group">
+											<label for="additional_message_label">Other</label>
+											<textarea name="additional_message" id="additional_message_label" class="form-control"
+												style="height:180px;" onkeyup="getVals(this, 'additional_message');"></textarea>
+										</div>
+									</div>
+									<!-- Q1-->
+
+									<!-- Q2 -->
+									<div class="step">
+										<h3 class="main_question mb-4"><strong>2 of 5</strong>Which CI Tool?</h3>
+										<div class="review_block">
+											<ul>
+												<li>
+													<div class="checkbox_radio_container">
+														<input type="radio" id="q2-o1" name="question_2" class="required"
+															onchange="getVals(this, 'question_2');">
+														<label class="radio" for="q2-o1"></label>
+														<label for="q2-o1" class="wrapper">Jenkins</label>
+													</div>
+												</li>
+												<li>
+													<div class="checkbox_radio_container">
+														<input type="radio" id="q2-o2" name="question_2" class="required"
+															onchange="getVals(this, 'question_2');">
+														<label class="radio" for="q2-o2"></label>
+														<label for="q2-o2" class="wrapper">Github Actions</label>
+													</div>
+												</li>
+												<li>
+													<div class="checkbox_radio_container">
+														<input type="radio" id="q2-o3" name="question_2" class="required"
+															onchange="getVals(this, 'question_2');">
+														<label class="radio" for="q2-o3"></label>
+														<label for="q2-o3" class="wrapper">Gitlab CI/CD</label>
+													</div>
+												</li>
+											</ul>
+										</div>
+										<!-- /review_block-->
+										<div class="form-group">
+											<label for="additional_message_2_label">Other</label>
+											<textarea name="additional_message_2" id="additional_message_2_label" class="form-control"
+												style="height:120px;" onkeyup="getVals(this, 'additional_message_2');"></textarea>
+										</div>
+									</div>
+									<!-- Q2-->
+
+									<!-- Q3 -->
+									<div class="step">
+										<h3 class="main_question mb-4"><strong>3 of 5</strong>Which Infrastructure as a Code Tool?</h3>
+										<div class="review_block">
+											<ul>
+												<li>
+													<div class="checkbox_radio_container">
+														<input type="radio" id="q3-o1" name="question_3" class="required"
+															onchange="getVals(this, 'question_3');">
+														<label class="radio" for="q3-o1"></label>
+														<label for="q3-o1" class="wrapper">Terraform</label>
+													</div>
+												</li>
+												<li>
+													<div class="checkbox_radio_container">
+														<input type="radio" id="q3-o2" name="question_3" class="required"
+															onchange="getVals(this, 'question_3');">
+														<label class="radio" for="q3-o2"></label>
+														<label for="q3-o2" class="wrapper">Pulumi</label>
+													</div>
+												</li>
+												<li>
+													<div class="checkbox_radio_container">
+														<input type="radio" id="q3-o3" name="question_3" class="required"
+															onchange="getVals(this, 'question_3');">
+														<label class="radio" for="q3-o3"></label>
+														<label for="q3-o3" class="wrapper">Puppet</label>
+													</div>
+												</li>
+												<li>
+													<div class="checkbox_radio_container">
+														<input type="radio" id="q3-o4" name="question_3" class="required"
+															onchange="getVals(this, 'question_3');">
+														<label class="radio" for="q3-o4"></label>
+														<label for="q3-o4" class="wrapper">Ansible</label>
+													</div>
+												</li>
+											</ul>
+										</div>
+										<!-- /review_block-->
+										<div class="form-group">
+											<label for="additional_message_3_label">Other</label>
+											<textarea name="additional_message_3" id="additional_message_3_label" class="form-control"
+												style="height:120px;" onkeyup="getVals(this, 'additional_message_3');"></textarea>
+										</div>
+									</div>
+									<!-- Q3-->
+
+									<!-- Q4 -->
+									<div class="step">
+										<h3 class="main_question mb-4"><strong>4 of 5</strong>Which Container Orchestration tool?</h3>
+										<div class="review_block">
+											<ul>
+												<li>
+													<div class="checkbox_radio_container">
+														<input type="radio" id="q4-o1" name="question_4" class="required"
+															onchange="getVals(this, 'question_4');">
+														<label class="radio" for="q4-o1"></label>
+														<label for="q4-o1" class="wrapper">Kubernetes</label>
+													</div>
+												</li>
+												<li>
+													<div class="checkbox_radio_container">
+														<input type="radio" id="q4-o2" name="question_4" class="required"
+															onchange="getVals(this, 'question_4');">
+														<label class="radio" for="q4-o2"></label>
+														<label for="q4-o2" class="wrapper">Docker Swarm</label>
+													</div>
+												</li>
+												<li>
+													<div class="checkbox_radio_container">
+														<input type="radio" id="q4-o2" name="question_4" class="required"
+															onchange="getVals(this, 'question_4');">
+														<label class="radio" for="q4-o2"></label>
+														<label for="q4-o2" class="wrapper">Nomad</label>
+													</div>
+												</li>
+											</ul>
+										</div>
+										<!-- /review_block-->
+										<div class="form-group">
+											<label for="additional_message_3_label">Other</label>
+											<textarea name="additional_message_3" id="additional_message_3_label" class="form-control"
+												style="height:120px;" onkeyup="getVals(this, 'additional_message_3');"></textarea>
+										</div>
+									</div>
+									<!-- Q4-->
+
+									<!-- Q5 -->
+									<div class="step">
+										<h3 class="main_question mb-4"><strong>5 of 5</strong>Which CD tool?</h3>
+										<div class="review_block">
+											<ul>
+												<li>
+													<div class="checkbox_radio_container">
+														<input type="radio" id="q5-o1" name="question_5" class="required"
+															onchange="getVals(this, 'question_5');">
+														<label class="radio" for="q5-o1"></label>
+														<label for="q5-o1" class="wrapper">ArgoCD</label>
+													</div>
+												</li>
+												<li>
+													<div class="checkbox_radio_container">
+														<input type="radio" id="q5-o2" name="question_5" class="required"
+															onchange="getVals(this, 'question_5');">
+														<label class="radio" for="q5-o2"></label>
+														<label for="q5-o2" class="wrapper">FluxCD</label>
+													</div>
+												</li>
+											</ul>
+										</div>
+										<!-- /review_block-->
+										<div class="form-group">
+											<label for="additional_message_3_label">Other</label>
+											<textarea name="additional_message_3" id="additional_message_3_label" class="form-control"
+												style="height:120px;" onkeyup="getVals(this, 'additional_message_3');"></textarea>
+										</div>
+									</div>
+									<!-- Q5-->
+
+									<!-- Summary-->
+									<div class="step">
+										<h3 class="main_question"><strong>4 of 5</strong>Summary</h3>
+										<div class="summary">
+											<ul>
+												<li>
+													<strong>1</strong>
+													<h5>Which Cloud Provider?</h5>
+													<!-- <p id="question_1" class="mb-2"></p>
+													<p id="additional_message"></p> -->
+													<div id="outputDiv_1"></div>
+												</li>
+												<li>
+													<strong>2</strong>
+													<h5>Which CI Tool?</h5>
+													<!-- <p id="question_2" class="mb-2"></p>
+													<p id="additional_message_2"></p> -->
+													<div id="outputDiv_2"></div>
+												</li>
+												<li>
+													<strong>3</strong>
+													<h5>Which Infrastructure as a Code Tool?</h5>
+													<!-- <p id="question_3"></p> -->
+													<div id="outputDiv_3"></div>
+												</li>
+											</ul>
+										</div>
+									</div>
+									<!-- Summary-->
+
+								</div>
+								<!-- /middle-wizard -->
+
+								<div id="bottom-wizard">
+									<button type="button" name="backward" class="backward">Prev</button>
+									<button type="button" name="forward" class="forward">Next</button>
+									<button type="submit" name="process" class="submit">Submit</button>
+								</div>
+								<!-- /bottom-wizard -->
+
+							</form>
+						</div>
+						<!-- /Wizard container -->
+					</div>
+					<!-- /col -->
+				</div>
+			</div>
+			<!-- /row -->
+		</div>
+		<!-- /container_centering -->
+		<footer>
+			<div class="container-fluid">
+				<div class="row">
+					<div class="col-md-3">
+						©2023 Eskola
+					</div>
+					<!-- <div class="col-md-9">
+						<ul class="clearfix">
+							<li><a href="#0" class="animated_link">Purchase this template</a></li>
+							<li><a href="index.html" class="animated_link">Demo 1</a></li>
+							<li><a href="index-2.html" class="animated_link">Demo 2</a></li>
+							<li><a href="index-3.html" class="animated_link">Demo 3</a></li>
+						</ul>
+					</div> -->
+				</div>
+				<!-- /row -->
+			</div>
+			<!-- /container-fluid -->
+		</footer>
+		<!-- /footer -->
+	</div>
+	<!-- /wrapper_centering -->
+
+	<!-- Modal terms -->
+	<div class="modal fade" id="terms-txt" tabindex="-1" role="dialog" aria-labelledby="termsLabel" aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h4 class="modal-title" id="termsLabel">Terms and conditions</h4>
+					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+				</div>
+				<div class="modal-body">
+					<p>Lorem ipsum dolor sit amet, in porro albucius qui, in <strong>nec quod novum accumsan</strong>, mei ludus
+						tamquam dolores id. No sit debitis meliore postulant, per ex prompta alterum sanctus, pro ne quod dicunt
+						sensibus.</p>
+					<p>Lorem ipsum dolor sit amet, in porro albucius qui, in nec quod novum accumsan, mei ludus tamquam dolores
+						id. No sit debitis meliore postulant, per ex prompta alterum sanctus, pro ne quod dicunt sensibus. Lorem
+						ipsum dolor sit amet, <strong>in porro albucius qui</strong>, in nec quod novum accumsan, mei ludus tamquam
+						dolores id. No sit debitis meliore postulant, per ex prompta alterum sanctus, pro ne quod dicunt sensibus.
+					</p>
+					<p>Lorem ipsum dolor sit amet, in porro albucius qui, in nec quod novum accumsan, mei ludus tamquam dolores
+						id. No sit debitis meliore postulant, per ex prompta alterum sanctus, pro ne quod dicunt sensibus.</p>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn_1" data-dismiss="modal">Close</button>
+				</div>
+			</div>
+			<!-- /.modal-content -->
+		</div>
+		<!-- /.modal-dialog -->
+	</div>
+	<!-- /.modal -->
+
+	<!-- COMMON SCRIPTS -->
+	<script src="js/jquery-3.6.3.min.js"></script>
+	<script src="js/common_scripts.min.js"></script>
+	<script src="js/functions.js"></script>
+
+	<!-- Wizard script -->
+	<script src="js/survey_func.js"></script>
+	<script>
+		const radios = document.querySelectorAll('input[type=radio][name=question_1]');
+		let selectedValue;
+
+		function setSelectedValue() {
+			selectedValue = this.value;
+			document.getElementById('outputDiv_1').textContent = selectedValue;
+		}
+
+		Array.prototype.forEach.call(radios, function (radio) {
+			radio.addEventListener('change', setSelectedValue);
+		});
+
+	</script>
+</body>
+
+</html>
