@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: go-app
-        image: triple3a/gosurvey:v4
+        image: triple3a/gosurvey:v5
         ports:
         - containerPort: 8080
       - name: mongo-app

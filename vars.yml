@@ -1,3 +1,4 @@
 USER_NAME: triple3a
 REPO_NAME: gosurvey
-IMAGE_TAG: v4
+IMAGE_TAG: v5
+NAMESPACE: go-survey 
