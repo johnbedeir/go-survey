@@ -43,10 +43,10 @@ awk -v search="$tag" -v replace="$newtag" '{gsub(search, replace)}1' "$compose" 
 echo "--------------------Update Img Tag Deployment--------------------"
 awk -v search="$tag" -v replace="$newtag" '{gsub(search, replace)}1' "$deployment" > tmpfile && mv tmpfile "$deployment"
 
-# # create namespace
-# echo "--------------------creating Namespace--------------------"
-# kubectl create ns $namespace || true
+# create namespace
+echo "--------------------creating Namespace--------------------"
+kubectl create ns $namespace || true
 
-# # deploy app
-# echo "--------------------Deploy App--------------------"
-# kubectl apply -f k8s
+# deploy app
+echo "--------------------Deploy App--------------------"
+kubectl apply -f k8s
