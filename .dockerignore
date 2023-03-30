@@ -1,5 +1,7 @@
 Dockerfile
+delete.sh
+deploy.sh
 docker-compose.yml
-playbook.yml
-vars.yml
 .gitignore
+k8s/
+README.md

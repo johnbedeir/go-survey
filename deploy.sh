@@ -6,7 +6,8 @@ namespace="go-survey"
 image_name="triple3a/gosurvey"
 
 # Set the file name and search string
-filename="k8s/deployment.yml"
+deployment="k8s/deployment.yml"
+compose="docker-compose.yml"
 
 # Get the tag from Docker Hub
 tag=$(curl -s https://hub.docker.com/v2/repositories/triple3a/gosurvey/tags\?page_size\=1000 | jq -r '.results[].name' | awk 'NR==1 {print$1}')
@@ -34,14 +35,18 @@ docker build -t $image_name:$newtag .
 echo "--------------------Pushing Docker Image--------------------"
 docker push $image_name:$newtag
 
+# replace the tag in the docker-compose
+echo "--------------------Update Img Tag Docker Compose--------------------"
+awk -v search="$tag" -v replace="$newtag" '{gsub(search, replace)}1' "$compose" > tmpfile && mv tmpfile "$compose"
+
 # replace the tag in the kubernetes deployment file
 echo "--------------------Update Img Tag Deployment--------------------"
-awk -v search="$tag" -v replace="$newtag" '{gsub(search, replace)}1' "$filename" > tmpfile && mv tmpfile "$filename"
+awk -v search="$tag" -v replace="$newtag" '{gsub(search, replace)}1' "$deployment" > tmpfile && mv tmpfile "$deployment"
 
-# create namespace
-echo "--------------------creating Namespace--------------------"
-kubectl create ns $namespace || true
+# # create namespace
+# echo "--------------------creating Namespace--------------------"
+# kubectl create ns $namespace || true
 
-# deploy app
-echo "--------------------Deploy App--------------------"
-kubectl apply -f k8s
+# # deploy app
+# echo "--------------------Deploy App--------------------"
+# kubectl apply -f k8s
