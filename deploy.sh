@@ -6,7 +6,7 @@ namespace="go-survey"
 image_name="triple3a/gosurvey"
 
 # Set the file name and search string
-deployment="k8s/deployment.yml"
+deployment="k8s/app.yml"
 compose="docker-compose.yml"
 
 # Get the tag from Docker Hub
