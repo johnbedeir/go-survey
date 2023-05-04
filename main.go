@@ -26,7 +26,7 @@ func main() {
 	// Set up MongoDB connection
 	ctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
 	defer cancel()
-	clientOptions := options.Client().ApplyURI("mongodb://:27017")
+	clientOptions := options.Client().ApplyURI("mongodb://mongo-app:27017")
 	client, _ = mongo.Connect(ctx, clientOptions)
 
 	router := mux.NewRouter()
@@ -35,7 +35,7 @@ func main() {
 	router.HandleFunc("/newquestion", NewQuestion).Methods("GET")
 	router.HandleFunc("/newanswer", NewAnswer).Methods("POST")
 
-	log.Fatal(http.ListenAndServe(":8080", router))
+	log.Fatal(http.ListenAndServe("0.0.0.0:8080", router))
 }
 
 // Question 1
