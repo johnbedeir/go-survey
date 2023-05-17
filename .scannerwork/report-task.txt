@@ -1,6 +1,6 @@
 projectKey=go-survey
-serverUrl=http://sonarqube.local.com:9999
+serverUrl=http://localhost:9999
 serverVersion=9.9.0.65466
-dashboardUrl=http://sonarqube.local.com:9999/dashboard?id=go-survey
-ceTaskId=AYcymLJg_fUoWmqn3jQJ
-ceTaskUrl=http://sonarqube.local.com:9999/api/ce/task?id=AYcymLJg_fUoWmqn3jQJ
+dashboardUrl=http://localhost:9999/dashboard?id=go-survey
+ceTaskId=AYc2pNDKRLsVmaH5LsVS
+ceTaskUrl=http://localhost:9999/api/ce/task?id=AYc2pNDKRLsVmaH5LsVS
