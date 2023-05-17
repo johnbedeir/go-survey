@@ -1,7 +1,0 @@
-Dockerfile
-delete.sh
-deploy.sh
-docker-compose.yml
-.gitignore
-k8s/
-README.md
