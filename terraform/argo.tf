@@ -27,7 +27,7 @@ resource "helm_release" "argocd" {
 
   set {
     name  = "server.service.type"
-    value = "LoadBalancer"
+    value = "ClusterIP"
   }
 
   set {
@@ -50,6 +50,15 @@ resource "helm_release" "argocd" {
     value = "15"
   }
 
+  set {
+    name  = "server.ingress.enabled"
+    value = "true"
+  }
+
+  set {
+    name  = "server.ingress.hosts"
+    value = "argocd.johnydev.com"
+  }
   depends_on = [helm_release.nginx_ingress, kubernetes_secret.argocd_password]
 
 }
