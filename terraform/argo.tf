@@ -1,3 +1,14 @@
+variable "argocd_values" {
+  type    = string
+  default = <<EOF
+    server:
+      ingress:
+        enabled: true
+        hosts:
+          - argocd.johnydev.com
+    EOF
+}
+
 resource "random_password" "argocd_password" {
   length           = 16
   special          = true
@@ -50,15 +61,8 @@ resource "helm_release" "argocd" {
     value = "15"
   }
 
-  set {
-    name  = "server.ingress.enabled"
-    value = "true"
-  }
+  values = [var.argocd_values]
 
-  set {
-    name  = "server.ingress.hosts"
-    value = "argocd.johnydev.com"
-  }
   depends_on = [helm_release.nginx_ingress, kubernetes_secret.argocd_password]
 
 }
