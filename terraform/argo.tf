@@ -1,13 +1,28 @@
 variable "argocd_values" {
-  type    = string
+  type = string
   default = <<EOF
-    server:
-      ingress:
-        enabled: true
-        hosts:
-          - argocd.johnydev.com
-    EOF
+server:
+  ingress:
+    enabled: true
+    hosts:
+      - argocd.johnydev.com
+    annotations:
+      nginx.ingress.kubernetes.io/ssl-redirect: "false"
+      nginx.ingress.kubernetes.io/force-ssl-redirect: "false"
+    ingressClassName: nginx
+    spec:
+      rules:
+        - http:
+            paths:
+              - path: /
+                pathType: Prefix
+                backend:
+                  name: argo-cd-argocd-argocd-server
+                  port:
+                    number: 80
+EOF
 }
+
 
 resource "random_password" "argocd_password" {
   length           = 16
@@ -28,7 +43,6 @@ resource "kubernetes_secret" "argocd_password" {
 }
 
 resource "helm_release" "argocd" {
-
   name             = "argo-cd"
   repository       = "https://argoproj.github.io/argo-helm"
   chart            = "argo-cd"
@@ -61,8 +75,13 @@ resource "helm_release" "argocd" {
     value = "15"
   }
 
-  values = [var.argocd_values]
+    values = [
+    var.argocd_values,
+      <<EOF
+      config:
+        server.insecure: true
+      EOF
+    ]
 
   depends_on = [helm_release.nginx_ingress, kubernetes_secret.argocd_password]
-
 }

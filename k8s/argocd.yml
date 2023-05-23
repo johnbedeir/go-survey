@@ -1,0 +1,70 @@
+# apiVersion: v1
+# kind: Namespace
+# metadata:
+#   name: argocd
+
+# ---
+# apiVersion: v1
+# kind: Secret
+# metadata:
+#   name: argocd-admin-secret
+#   namespace: argocd
+# stringData:
+#   password: cGFzc3dvcmQK
+
+# ---
+# apiVersion: v1
+# kind: ServiceAccount
+# metadata:
+#   name: argocd-server
+#   namespace: argocd
+
+# ---
+# apiVersion: rbac.authorization.k8s.io/v1
+# kind: ClusterRoleBinding
+# metadata:
+#   name: argocd-server-clusterrolebinding
+# roleRef:
+#   apiGroup: rbac.authorization.k8s.io
+#   kind: ClusterRole
+#   name: cluster-admin
+# subjects:
+# - kind: ServiceAccount
+#   name: argocd-server
+#   namespace: argocd
+
+# ---
+# apiVersion: helm.fluxcd.io/v1
+# kind: HelmRelease
+# metadata:
+#   name: argocd
+#   namespace: argocd
+# spec:
+#   chart:
+#     repository: https://argoproj.github.io/argo-helm
+#     name: argo-cd
+#     version: 3.11.3
+#   values:
+#     server:
+#       service:
+#         type: ClusterIP
+#       ingress:
+#         enabled: true
+#         hosts:
+#           - argocd.example.com
+#         annotations:
+#           kubernetes.io/ingress.class: nginx
+#     admin:
+#       passwordSecret:
+#         name: argocd-admin-secret
+#         key: password
+#     rbac:
+#       create: true
+#       policy: 'default'
+#     config:
+#       rbac:
+#         policy: 'default'
+#       repositories:
+#         - url: https://charts.example.com/stable
+#           name: stable
+
