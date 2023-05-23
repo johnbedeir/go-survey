@@ -1,3 +1,14 @@
+variable "argocd_values" {
+  type    = string
+  default = <<EOF
+    server:
+      ingress:
+        enabled: true
+        hosts:
+          - argocd.johnydev.com
+    EOF
+}
+
 resource "random_password" "argocd_password" {
   length           = 16
   special          = true
@@ -27,7 +38,7 @@ resource "helm_release" "argocd" {
 
   set {
     name  = "server.service.type"
-    value = "LoadBalancer"
+    value = "ClusterIP"
   }
 
   set {
@@ -49,6 +60,8 @@ resource "helm_release" "argocd" {
     name  = "controller.args.repoServerTimeoutSeconds"
     value = "15"
   }
+
+  values = [var.argocd_values]
 
   depends_on = [helm_release.nginx_ingress, kubernetes_secret.argocd_password]
 

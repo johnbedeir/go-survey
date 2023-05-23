@@ -1,5 +1,5 @@
 # resource "aws_s3_bucket" "s3" {
-#   bucket = "tfstate-comforte-prod"
+#   bucket = "tfstate-prod"
 
 #   tags = {
 #     Environment = "production"
